@@ -34,6 +34,12 @@ DirectoryIndex app.php
     RewriteCond %{HTTP:Authorization} .
     RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # Automatically use app_dev.php on sandbox and docker
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !app.php
+    RewriteCond %{HTTP_HOST} \.(sandbox|docker|lph)(:[0-9]+)?$
+    RewriteRule ^(.*)$ /app_dev.php [QSA,L]
+
     # Redirect to URI without front controller to prevent duplicate content
     # (with and without `/app.php`). Only do this redirect on the initial
     # rewrite by Apache and not on subsequent cycles. Otherwise we would get an
