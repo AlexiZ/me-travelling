@@ -1,1 +1,102 @@
-HELLO
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+
+        html{
+            min-height:80%;/* make sure it is at least as tall as the viewport */
+            position:relative;
+        }
+        body{
+            height:100%; /* force the BODY element to match the height of the HTML element */
+        }
+        #map{
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            overflow:hidden;
+        }
+
+    </style>
+{% endblock %}
+
+{% block title %}
+    Disponibilités
+{% endblock %}
+
+{% block body %}
+    <div id="map">
+        <section class="col-lg-12 col-md-12 col-sm-11 map" style="width: 100%; height: 100%; padding:0;">
+            <div id="googleMap" style="width: 100%; height: 100%;"
+                 data-icon="{{ asset('bundles/app/img/puceGMap.png') }}"
+                 data-iconclusterer="{{ asset('bundles/app/img/puceGMapGroup.png') }}"
+                 data-mapTypeControl="false"
+                 data-forceDefaultPosition="true"
+                 data-streetviewcontrol="false"
+                 data-latitude="47"
+                 data-zoomControl="true"
+                 data-scrollwheel="true"
+                 data-showMarkers="true"
+                 data-departmentColor="#0f4058"
+                 data-zoom="10"
+                 data-fitBounds="true"
+            ></div>
+        </section>
+    </div>
+
+    <div class="row microformats">
+        <div class="col-lg-3 col-lg-offset-9 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8" id="microformats">
+            <div class="hide">
+                <div class="vcard" hidden>
+                    <div class="latitude">47.215061</div>
+                    <div class="longitude">-1.550546</div>
+                    <div class="rank">1</div>
+                </div>
+
+                <div class="infoWindow" hidden>
+                    <div class="infosPratiques">
+                        <img class="img-responsive" src="http://placehold.it/250x150">
+
+                        <p class="name">Name</p>
+                        <p class="adress">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            12, rue du bois dormant 11100 Ici
+                        </p>
+                        <a class="btn btn-primary btnDetails" href="#">Voir les détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="container">
+        <div class="row">
+            <h1>Me like it</h1>
+
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script type="text/javascript">var GOOGLE_API_KEY = "{{ project.google_api_key|default('XXXXXXXXXXXXXXX') }}";</script>
+    <script src="{{ asset('bundles/app/js/markerclusterer.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/google.maps.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+        });
+    </script>
+{% endblock %}

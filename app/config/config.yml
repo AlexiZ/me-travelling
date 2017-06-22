@@ -37,6 +37,9 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        project:
+            google_api_key: "%google.maps.api_key%"
 
 # Doctrine Configuration
 doctrine:
