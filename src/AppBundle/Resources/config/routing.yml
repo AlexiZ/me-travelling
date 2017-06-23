@@ -1,3 +1,15 @@
 homepage:
     path: /
     defaults: { _controller: AppBundle:Default:index }
+
+position_list:
+    path: /positions
+    defaults: { _controller: AppBundle:Position:positionList }
+
+position_add:
+    path: /position/new
+    defaults: { _controller: AppBundle:Position:positionAdd }
+
+position_show:
+    path: /position/show/{id}
+    defaults: { _controller: AppBundle:Position:positionShow }

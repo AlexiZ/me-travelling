@@ -27,35 +27,6 @@
 {% endblock %}
 
 {% block body %}
-    <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="#page-top">Me travelling</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Posts</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
     <!-- Header -->
     <header>
         <div class="container" id="maincontent" tabindex="-1">
@@ -83,24 +54,47 @@
                     <div class="row microformats">
                         <div class="col-lg-3 col-lg-offset-9 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8" id="microformats">
                             <div class="hide">
-                                <div class="vcard" hidden>
-                                    <div class="latitude">47.215061</div>
-                                    <div class="longitude">-1.550546</div>
-                                    <div class="rank">1</div>
-                                </div>
+                                {% if positions|default %}
+                                    {% for position in positions %}
+                                        <div class="vcard" hidden>
+                                            <div class="latitude">{{ position.latitude }}</div>
+                                            <div class="longitude">{{ position.longitude }}</div>
+                                            <div class="rank">{{ position.id }}</div>
+                                        </div>
 
-                                <div class="infoWindow" hidden>
-                                    <div class="infosPratiques">
-                                        <img class="img-responsive" src="{{ asset('bundles/app/lib/startbootstrap-freelancer-gh-pages/img/portfolio/cabin.png') }}">
+                                        <div class="infoWindow" hidden>
+                                            <div class="infosPratiques">
+                                                <img class="img-responsive" src="{{ asset('bundles/app/lib/startbootstrap-freelancer-gh-pages/img/portfolio/cabin.png') }}">
 
-                                        <p class="name">Name</p>
-                                        <p class="adress">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            12, rue du bois dormant 11100 Ici
-                                        </p>
-                                        <a class="btn btn-primary btnDetails" href="#">Voir les détails</a>
+                                                <p class="name">{{ position.title }}</p>
+                                                <p class="adress">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    {{ position.description }}
+                                                </p>
+                                                <a class="btn btn-primary btnDetails" href="{{ path('position_show', {'id': position.id}) }}">Voir les détails</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="vcard" hidden>
+                                        <div class="latitude">47.215061</div>
+                                        <div class="longitude">-1.550546</div>
+                                        <div class="rank">1</div>
                                     </div>
-                                </div>
+
+                                    <div class="infoWindow" hidden>
+                                        <div class="infosPratiques">
+                                            <img class="img-responsive" src="{{ asset('bundles/app/lib/startbootstrap-freelancer-gh-pages/img/portfolio/cabin.png') }}">
+
+                                            <p class="name">Name</p>
+                                            <p class="adress">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                12, rue du bois dormant 11100 Ici
+                                            </p>
+                                            <a class="btn btn-primary btnDetails" href="#">Voir les détails</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
