@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Position;
+use AppBundle\Form\PositionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class PositionController extends Controller
 {
@@ -22,9 +24,19 @@ class PositionController extends Controller
         return $this->render('@App/Default/index.html.twig', $parameters);
     }
 
-    public function positionAddAction()
+    public function positionAddAction(Request $request)
     {
+        $parameters = [];
+        $position = new Position();
 
+        $form = $this->createForm(PositionType::class, $position);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            dump($position);die();
+        }
+        $parameters = array_merge($parameters, ['form' => $form->createView()]);
+
+        return $this->render('@App/Position/new.html.twig', $parameters);
     }
 
     public function positionShowAction($id)

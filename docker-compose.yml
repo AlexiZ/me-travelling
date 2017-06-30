@@ -1,4 +1,4 @@
-version:  '2'
+version:  '3.2'
 
 networks:
     proxy:
@@ -34,11 +34,10 @@ services:
         networks:
             - default
             - proxy
-        volumes_from:
-            - php
         volumes:
             - ./var/logs/apache:/var/log/apache2
+            - .:/var/www/symfony
         environment:
-            VIRTUAL_HOST: $COMPOSE_PROJECT_NAME.$DOCKER_HOST_SUFFIX,$COMPOSE_PROJECT_NAME.docker
+            VIRTUAL_HOST: $COMPOSE_PROJECT_NAME.$DOCKER_HOST_SUFFIX
             CERT_NAME: generic
             HTTPS_METHOD: noredirect
