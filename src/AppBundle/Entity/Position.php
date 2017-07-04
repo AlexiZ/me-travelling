@@ -51,7 +51,7 @@ class Position
     private $longitude;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\File")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\File", cascade={"persist"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      */
     private $image;

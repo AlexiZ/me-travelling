@@ -2,4 +2,6 @@ position:
     form:
         title: "Titre"
         description: "Description"
+        latitude: "Latitude"
+        longitude: "Longitude"
         image: "Image"

@@ -9,11 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PositionController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('', array('name' => $name));
-    }
-
     public function positionListAction()
     {
         $parameters = [];
@@ -28,11 +23,15 @@ class PositionController extends Controller
     {
         $parameters = [];
         $position = new Position();
+        $em = $this->get('doctrine.orm.entity_manager');
 
-        $form = $this->createForm(PositionType::class, $position);
+        $form = $this->createForm(PositionType::class, $position, ['imagesDirectory' => $this->getParameter('images_directory')]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($position);die();
+            $em->persist($position);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', 'Position successfully saved');
         }
         $parameters = array_merge($parameters, ['form' => $form->createView()]);
 

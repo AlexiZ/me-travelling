@@ -31,7 +31,7 @@ var map = null;
                 , departmentColor = data.departmentcolor != undefined ? data.departmentcolor : '#072f4a'
                 , showMarkers = data.showmarkers != undefined ? data.showmarkers : true
                 , zoomControl = data.zoomcontrol != undefined ? data.zoomcontrol : true
-                , maxZoom = data.maxzoom != undefined ? data.maxzoom : 12
+                , maxZoom = data.maxzoom != undefined ? data.maxzoom : 16
             ;
 
             addMarkers = function() {
@@ -229,7 +229,7 @@ var map = null;
                 var script = document.createElement('script');
 
                 script.type = 'text/javascript';
-                script.src = 'http://maps.googleapis.com/maps/api/js?callback=initialize&language=fr&region=FR&v=3'
+                script.src = 'https://maps.googleapis.com/maps/api/js?callback=initialize&language=fr&region=FR&v=3'
                     + ((/^X+$/).test(GOOGLE_API_KEY) ? '' : '&key=' + GOOGLE_API_KEY);
                 document.body.appendChild(script);
             }

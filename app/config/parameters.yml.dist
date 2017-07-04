@@ -18,6 +18,8 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    app_domain: availability.docker
+    app_domain: https://travelling.docker
 
     google.maps.api_key: XXXXXXXXXXXXXX
+
+    images_directory: '%kernel.project_dir%/web/uploads/images'
