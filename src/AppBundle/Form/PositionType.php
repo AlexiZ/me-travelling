@@ -2,8 +2,8 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Position;
+use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +24,8 @@ class PositionType extends AbstractType
                     'label' => 'position.form.title',
                     'attr' => [
                         'placeholder' => 'position.form.title'
-                    ]
+                    ],
+                    'required' => true
                 ]
             )
             ->add(
@@ -34,14 +35,16 @@ class PositionType extends AbstractType
                     'label' => 'position.form.description',
                     'attr' => [
                         'placeholder' => 'position.form.description'
-                    ]
+                    ],
+                    'required' => false
                 ]
             )
             ->add(
                 'image',
-                FileType::class,
+                ElFinderType::class,
                 [
-                    'label' => 'position.form.image'
+                    'label' => 'position.form.image',
+                    'required' => false
                 ]
             )
         ;

@@ -1,4 +1,15 @@
 {% extends 'base.html.twig' %}
+{% set page = { 'id' : 'position', 'class' : ['new'] } %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style type="text/css">
+        #position section {
+            padding: 130px 0;
+        }
+    </style>
+{% endblock %}
 
 {% block title %}
     Me travelling - add position
@@ -33,7 +44,7 @@
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="Save">
+                <input type="submit" class="btn btn-primary pull-right" value="Save">
 
                 {{ form_rest(form) }}
             {{ form_end(form) }}
