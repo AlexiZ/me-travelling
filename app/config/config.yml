@@ -76,3 +76,15 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
+
+liip_imagine:
+    filter_sets:
+        # name our filter set "my_thumb_filter"
+        position_filter:
+            filters:
+                # use and setup the "thumbnail" filter
+                thumbnail:
+                    # set the thumbnail size to "32x32" pixels
+                    size: [360, 270]
+                    # crop the input image, if required
+                    mode: outbound
