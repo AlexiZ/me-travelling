@@ -23,3 +23,5 @@ parameters:
     google.maps.api_key: XXXXXXXXXXXXXX
 
     images_directory: '%kernel.project_dir%/web/uploads/images'
+
+    add_token: XXXXX

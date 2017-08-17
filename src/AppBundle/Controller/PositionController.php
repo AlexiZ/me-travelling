@@ -37,9 +37,4 @@ class PositionController extends Controller
 
         return $this->render('@App/Position/new.html.twig', $parameters);
     }
-
-    public function positionShowAction($id)
-    {
-
-    }
 }

@@ -40,6 +40,7 @@ twig:
     globals:
         project:
             google_api_key: "%google.maps.api_key%"
+            add_token: "%add_token%"
 
 # Doctrine Configuration
 doctrine:

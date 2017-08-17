@@ -9,7 +9,3 @@ position_list:
 position_add:
     path: /position/new
     defaults: { _controller: AppBundle:Position:positionAdd }
-
-position_show:
-    path: /position/show/{id}
-    defaults: { _controller: AppBundle:Position:positionShow }
