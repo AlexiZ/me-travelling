@@ -170,6 +170,11 @@ var map = null;
                     mapTypeId: google.maps.MapTypeId[mapTypeId]
                 });
 
+                var ctaLayer = new google.maps.KmlLayer({
+                    url: '/bundles/app/lib/gmaps-files/GR.kml',
+                    map: map
+                });
+
                 if (showMarkers) {
                     addMarkers();
                     google.maps.event.addDomListener(document.getElementById('microformats'), 'change', addMarkers);
